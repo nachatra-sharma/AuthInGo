@@ -1,6 +1,7 @@
 package app
 
 import (
+	"AuthInGo/router"
 	"fmt"
 	"net/http"
 	"time"
@@ -19,7 +20,7 @@ func (app *Application) Run() error {
 
 	server := &http.Server{
 		Addr: app.Config.Addr,
-		Handler: nil, // setup chi router and put it here
+		Handler: router.SetupRouter(),
 		ReadTimeout: 10 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
